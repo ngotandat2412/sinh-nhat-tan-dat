@@ -2,6 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>🎉 Special Gift for Tấn Đạt 🎁</title>
 
 <style>
@@ -57,13 +58,14 @@ body, html {
     letter-spacing: 2px;
     text-shadow: 0 0 10px gold;
     animation: blink 1.5s infinite;
+    text-align: center;
 }
 
 @keyframes blink {
     50% { opacity: 0.3; }
 }
 
-/* --- TRANG CHÍNH (MAIN CONTENT) - ẨN LÚC ĐẦU --- */
+/* --- TRANG CHÍNH --- */
 #main-content {
     opacity: 0;
     visibility: hidden;
@@ -99,16 +101,18 @@ body, html {
 .card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
-    padding: 60px;
+    padding: 60px 20px;
     border-radius: 50px;
     text-align: center;
     border: 2px solid rgba(255, 215, 0, 0.5);
     box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(255, 215, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
 }
 
-h1 { font-size: 2.5rem; color: #fff; text-transform: uppercase; letter-spacing: 5px; }
+h1 { font-size: 1.8rem; color: #fff; text-transform: uppercase; letter-spacing: 5px; }
 h2 {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 900;
     background: linear-gradient(to bottom, #FFD700, #FF8C00, #FFF);
     -webkit-background-clip: text;
@@ -118,7 +122,7 @@ h2 {
 }
 
 .cake { font-size: 6rem; filter: drop-shadow(0 0 15px gold); margin: 20px 0; }
-p { font-size: 1.4rem; color: #fff; line-height: 1.8; }
+p { font-size: 1.3rem; color: #fff; line-height: 1.8; }
 
 /* PHÁO HOA & BÓNG BAY */
 .firework {
@@ -147,7 +151,8 @@ p { font-size: 1.4rem; color: #fff; line-height: 1.8; }
 
 @keyframes flyUp { to { transform: translateY(-120vh) translateX(var(--drift)); } }
 
-iframe { width: 0; height: 0; border: none; position: absolute; }
+/* Ẩn trình phát nhạc */
+#audio-player { display: none; }
 </style>
 </head>
 
@@ -155,14 +160,16 @@ iframe { width: 0; height: 0; border: none; position: absolute; }
 
 <div id="welcome-screen" onclick="startCelebration()">
     <div class="gift-box">🎁</div>
-    <div class="click-text">CHẠM VÀO ĐỂ MỞ QUÀ</div>
+    <div class="click-text">CHẠM VÀO ĐỂ MỞ QUÀ <br> (NHỚ BẬT ÂM THANH)</div>
 </div>
 
 <div id="main-content">
     <div class="bg-birthday"></div>
     <div class="bg-overlay"></div>
 
-    <iframe id="music" allow="autoplay; encrypted-media"></iframe>
+    <audio id="audio-player" loop>
+        <source src="https://raw.githubusercontent.com/NguyenBaThanh/Storage/main/happy_birthday_remix.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="container">
         <div class="card">
@@ -185,19 +192,21 @@ function startCelebration() {
     if (celebrationStarted) return;
     celebrationStarted = true;
 
-    // 1. Ẩn màn hình chào
+    // 1. Phát nhạc ngay lập tức (Rất quan trọng cho điện thoại)
+    const audio = document.getElementById("audio-player");
+    audio.play().catch(e => console.log("Trình duyệt chặn nhạc"));
+
+    // 2. Ẩn màn hình chào
     const welcome = document.getElementById("welcome-screen");
     welcome.style.opacity = "0";
-    setTimeout(() => welcome.style.display = "none", 1000);
-
-    // 2. Hiện nội dung chính
-    const main = document.getElementById("main-content");
-    main.style.visibility = "visible";
-    main.style.opacity = "1";
-
-    // 3. Kích hoạt nhạc tự động (vượt qua chính sách trình duyệt nhờ vào hành động click)
-    const iframe = document.getElementById("music");
-    iframe.src = "https://www.youtube.com/embed/Wu8NeFXaoOc?autoplay=1&start=60&loop=1&playlist=Wu8NeFXaoOc";
+    setTimeout(() => {
+        welcome.style.display = "none";
+        
+        // 3. Hiện nội dung chính
+        const main = document.getElementById("main-content");
+        main.style.visibility = "visible";
+        main.style.opacity = "1";
+    }, 1000);
 
     // 4. Bắt đầu pháo hoa và bóng bay
     setInterval(createFirework, 700);
