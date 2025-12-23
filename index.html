@@ -1,174 +1,181 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>🎉 Special Gift for Tấn Đạt 🎁</title>
+    <meta charset="UTF-8">
+    <title>🎉 Special Gift for Tấn Đạt 🎁</title>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Roboto, sans-serif;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
 
-body, html {
-    height: 100%;
-    overflow: hidden;
-    background-color: #000;
-}
+        body, html {
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
 
-/* --- TRANG CHÀO (WELCOME PAGE) --- */
-#welcome-screen {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle, #2c3e50, #000);
-    transition: opacity 1s ease, visibility 1s;
-}
+        /* --- TRANG CHÀO (WELCOME PAGE) --- */
+        #welcome-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, #2c3e50, #000);
+            transition: opacity 1s ease, visibility 1s;
+            cursor: pointer; /* Hiệu ứng bàn tay để người dùng biết là phải click */
+        }
 
-.gift-box {
-    font-size: 8rem;
-    cursor: pointer;
-    transition: transform 0.3s;
-    animation: shake 1s infinite;
-}
+        .gift-box {
+            font-size: 8rem;
+            transition: transform 0.3s;
+            animation: shake 1s infinite;
+        }
 
-.gift-box:hover {
-    transform: scale(1.2);
-}
+        .gift-box:hover { transform: scale(1.2); }
 
-@keyframes shake {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-10deg); }
-    75% { transform: rotate(10deg); }
-}
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
 
-.click-text {
-    color: gold;
-    margin-top: 20px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px gold;
-    animation: blink 1.5s infinite;
-    text-align: center;
-}
+        .click-text {
+            color: gold;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px gold;
+            animation: blink 1.5s infinite;
+        }
 
-@keyframes blink {
-    50% { opacity: 0.3; }
-}
+        @keyframes blink { 50% { opacity: 0.3; } }
 
-/* --- TRANG CHÍNH --- */
-#main-content {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 2s ease;
-    height: 100%;
-}
+        /* --- TRANG CHÍNH (MAIN CONTENT) --- */
+        #main-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 2s ease;
+            height: 100%;
+        }
 
-.bg-birthday {
-    position: fixed;
-    inset: 0;
-    background: url('https://images.unsplash.com/photo-1530103043960-ef38714abb15?q=80&w=2069&auto=format&fit=crop') center/cover no-repeat;
-    z-index: 0;
-    filter: brightness(0.5);
-}
+        .bg-birthday {
+            position: fixed;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1530103043960-ef38714abb15?q=80&w=2069&auto=format&fit=crop') center/cover no-repeat;
+            z-index: 0;
+            filter: brightness(0.5);
+        }
 
-.bg-overlay {
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle, transparent 10%, rgba(0,0,0,0.7) 100%);
-    z-index: 1;
-}
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, transparent 10%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
 
-.container {
-    position: relative;
-    z-index: 10;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1000px;
-}
+        .container {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
 
-.card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    padding: 60px 20px;
-    border-radius: 50px;
-    text-align: center;
-    border: 2px solid rgba(255, 215, 0, 0.5);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(255, 215, 0, 0.2);
-    width: 90%;
-    max-width: 500px;
-}
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 60px;
+            border-radius: 50px;
+            text-align: center;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(255, 215, 0, 0.2);
+        }
 
-h1 { font-size: 1.8rem; color: #fff; text-transform: uppercase; letter-spacing: 5px; }
-h2 {
-    font-size: 4rem;
-    font-weight: 900;
-    background: linear-gradient(to bottom, #FFD700, #FF8C00, #FFF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
-    margin-bottom: 20px;
-}
+        h1 { font-size: 2.5rem; color: #fff; text-transform: uppercase; letter-spacing: 5px; }
+        h2 {
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(to bottom, #FFD700, #FF8C00, #FFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+            margin-bottom: 20px;
+        }
 
-.cake { font-size: 6rem; filter: drop-shadow(0 0 15px gold); margin: 20px 0; }
-p { font-size: 1.3rem; color: #fff; line-height: 1.8; }
+        .cake { font-size: 6rem; filter: drop-shadow(0 0 15px gold); margin: 20px 0; }
+        p { font-size: 1.4rem; color: #fff; line-height: 1.8; }
 
-/* PHÁO HOA & BÓNG BAY */
-.firework {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: explode 1.5s ease-out forwards;
-}
+        /* Nút điều khiển nhạc */
+        #music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            padding: 10px 20px;
+            background: rgba(255, 215, 0, 0.8);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-@keyframes explode {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
-}
+        #music-btn:hover { transform: scale(1.1); background: gold; }
 
-.balloon {
-    position: absolute;
-    bottom: -100px;
-    width: 40px;
-    height: 50px;
-    border-radius: 50%;
-    z-index: 5;
-    animation: flyUp 8s linear forwards;
-}
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: explode 1.5s ease-out forwards;
+        }
 
-@keyframes flyUp { to { transform: translateY(-120vh) translateX(var(--drift)); } }
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+        }
 
-/* Ẩn trình phát nhạc */
-#audio-player { display: none; }
-</style>
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 40px;
+            height: 50px;
+            border-radius: 50%;
+            z-index: 5;
+            animation: flyUp 8s linear forwards;
+        }
+
+        @keyframes flyUp { to { transform: translateY(-120vh) translateX(var(--drift)); } }
+    </style>
 </head>
 
 <body>
 
 <div id="welcome-screen" onclick="startCelebration()">
     <div class="gift-box">🎁</div>
-    <div class="click-text">CHẠM VÀO ĐỂ MỞ QUÀ <br> (NHỚ BẬT ÂM THANH)</div>
+    <div class="click-text">CHẠM VÀO ĐỂ MỞ QUÀ</div>
 </div>
 
 <div id="main-content">
+    <button id="music-btn" onclick="toggleMusic()">🎵 BẬT/TẮT NHẠC</button>
+    
     <div class="bg-birthday"></div>
     <div class="bg-overlay"></div>
 
-    <audio id="audio-player" loop>
-        <source src="https://raw.githubusercontent.com/NguyenBaThanh/Storage/main/happy_birthday_remix.mp3" type="audio/mpeg">
+    <audio id="music" loop>
+        <source src="audio/khuc-hat-sinh-nhat.mp3" type="audio/mpeg">
     </audio>
 
     <div class="container">
@@ -187,30 +194,41 @@ p { font-size: 1.3rem; color: #fff; line-height: 1.8; }
 
 <script>
 let celebrationStarted = false;
+const audio = document.getElementById("music");
 
 function startCelebration() {
     if (celebrationStarted) return;
     celebrationStarted = true;
 
-    // 1. Phát nhạc ngay lập tức (Rất quan trọng cho điện thoại)
-    const audio = document.getElementById("audio-player");
-    audio.play().catch(e => console.log("Trình duyệt chặn nhạc"));
+    // 1. Phát nhạc NGAY LẬP TỨC khi click (Lệnh này quan trọng nhất)
+    audio.play().then(() => {
+        console.log("Nhạc đang phát...");
+    }).catch(error => {
+        console.log("Trình duyệt chặn tự động phát, hãy thử nhấn nút Bật nhạc góc trên.", error);
+    });
 
-    // 2. Ẩn màn hình chào
+    // 2. Hiệu ứng chuyển trang
     const welcome = document.getElementById("welcome-screen");
     welcome.style.opacity = "0";
     setTimeout(() => {
         welcome.style.display = "none";
-        
-        // 3. Hiện nội dung chính
+        // 3. Hiện nội dung chính lung linh
         const main = document.getElementById("main-content");
         main.style.visibility = "visible";
         main.style.opacity = "1";
     }, 1000);
 
-    // 4. Bắt đầu pháo hoa và bóng bay
+    // 4. Kích hoạt pháo hoa và bóng bay
     setInterval(createFirework, 700);
     setInterval(createBalloon, 1500);
+}
+
+function toggleMusic() {
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
 }
 
 function createFirework() {
